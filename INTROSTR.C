@@ -4,7 +4,7 @@
  {
  struct stud {
  char name[20];
- float ld,mp,dm,carch,coi,java;
+ float ld,mp,dm,carch,coi,java,ds;
  }s;  clrscr();
  printf("Enter the student name:");
  scanf("%s",&s.name);
@@ -21,7 +21,9 @@ printf("\n Const of India");
 scanf("%f",&s.coi);
 printf("\njava");
 scanf("%f",&s.java);
+printf("\n Data Structures");
+scanf("%f",&s.ds);  
 printf("\nEntered marks\n");
-printf("LD=%f MP=%f DM=%f Computer Architechture=%f Const of India=%f Java=%f",s.ld,s.mp,s.dm,s.carch,s.coi,s.java);
+printf("LD=%f MP=%f DM=%f Computer Architechture=%f Const of India=%f Java=%f Data Structures=%f",s.ld,s.mp,s.dm,s.carch,s.coi,s.java,s.ds);
 getch();
 }
