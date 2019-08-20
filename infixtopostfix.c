@@ -1,78 +1,75 @@
 #include<stdio.h>
-#include<ctype.h>
 #include<string.h>
-#include<stdlib.h>
-void push (char c[10],int *t)
-{
-if (*t==9)
-{
-printf("Stack overflow\n");
-exit(0);
-}
-*t=*t+1;
 
-}
-void pop (char c[10],int *t)
-{
-if(*t==-1)
-{
-printf("Stack underflow\n");
-return;
-}
-*t=*t-1;
-}
-void intopo (char infix[], char postfix[])
-{
-int i,j;
-char ele;
-char x;
-push('(');
-strcat( infix,')');
-i=0;
-j=0;
-ele=infix[i];
-while(ele!='\')
-{
-if(ele=='(')
-{
-push(ele);
-}
-else if(isdigit(ele) || isalpha(ele))
-{
-postfix[j]=ele;
-j++;
-}
-else if(isoperator(ele)==1)
-{
-x=pop();
-while(isoperator(ele)==1 && precedence(x)>=precedence(ele))
-{
-postfix[j]=x;
-j++;
-X=pop();
-}
-push(x);
-push(ele);
-}
-else if(item==')')
-{
-X=pop();
-while(x!='(')
-{
-postfix[j]=x;
-j++;
-x=pop();
-}
-}
-ele
-{
-printf("\n Invalid infix expression \n");
-getchar();
-exit(0);
-}
-i++;
-ele=infix[i];
-}
-if (top>0)
-{
+//works without process.h header file
 
+int F(char symbol)
+{
+    switch(symbol)
+    {
+        case'+':
+        case'-':return 2;
+        case'*':
+        case'/':return 4;
+        case'^':
+        case'$':return 5;
+        case'(':return 0;
+        case'#':return -1;
+        default:return 8;
+    }
+}
+
+int G(char symbol)
+{
+    switch(symbol)
+    {
+        case'+':
+        case'-':return 1;
+        case'*':
+        case'/':return 3;
+        case'^':
+        case'$':return 6;
+        case'(':return 9;
+        case')':return 0;
+        default:return 7;
+    }
+}
+int infix_postfix(char infix[],char postfix[])
+{
+    int top,i,j;
+    char s[30],symbol;
+    top=-1;
+    s[++top]='#';
+    j=0;
+    for(i=0;i<strlen(infix);i++)
+    {
+        symbol=infix[i];
+        while(F(s[top])>G(symbol))
+        {
+            postfix[j]=s[top--];
+            j++;
+        }
+    if(F(s[top])!=G(symbol))
+    s[++top]=symbol;
+    else
+    top--;
+    }
+    while(s[top]!='#')
+    {
+        postfix[j++]=s[top--];
+    }
+    postfix[j]='\0';
+ return 0;   
+}
+int main()
+{
+    char infix[20];
+    char postfix[20];
+    
+    printf("Enter the valid infix expression\n");
+    scanf("%s",infix);
+    infix_postfix(infix,postfix);
+    printf("The postfix expression is\n");
+    printf("%s\n",postfix);
+    return 0;
+}
