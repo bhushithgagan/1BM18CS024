@@ -2,22 +2,22 @@
 #include<string.h>
 #include<math.h>
 #include<ctype.h>
-void push(int s[],int *top,int a)
+void push(int s[],int *t,int a)
 {
-  if(*top == 19)
+  if(*t == 19)
   {
     printf("Stack overflow \n");
   }
-  s[++(*top)] = a;
+  s[++(*t)] = a;
 }
-int pop(int s[],int *top)
+int pop(int s[],int *t)
 {
-  if(*top == -1)
+  if(*t == -1)
   {
     printf("Stack underflow \n");
     return 0;
   }
-  return s[(*top)--];
+  return s[(*t)--];
 }
 int res(int a, int b, char c)
 {
@@ -32,7 +32,7 @@ int res(int a, int b, char c)
 }
 int main()
 {
-  int s[20],top,i,value,op1,op2,ans,k;
+  int s[20],top,i,value,op1,op2,an,x;
   char post[50];top=-1;i=0;
   printf("Enter the postfix expression \n");
   scanf("%s",post);
@@ -40,8 +40,8 @@ int main()
   {
     if(isdigit(post[i]))
       { 
-        k = (int)post[i] - 48;
-        push(s, &top, k);
+        x = (int)post[i] - 48;
+        push(s, &top, x);
         }
     else
     {
@@ -52,8 +52,8 @@ int main()
     }
     i++;
   }
-  ans = pop(s,&top);
-  printf("ANSWER = %d \n",ans);
+  an = pop(s,&top);
+  printf("ANSWER = %d \n",an);
   return 1;
 }
   
