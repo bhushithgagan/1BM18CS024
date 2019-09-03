@@ -1,4 +1,4 @@
-# define size 10
+# define size 5
 #include<stdio.h>
 void insert(int ele,int *r,int q[])
 {
@@ -31,7 +31,7 @@ void display(int q[],int f,int r)
         return;
     }
     printf("Contents of queue are\n");
-    for(i=f;i<r;i++)
+    for(i=f;i<=r;i++)
     {
         printf("%d",q[i]);
     }
@@ -42,7 +42,7 @@ int main()
     int c,c1;
     do{
         printf("*** Enter your choice ***\n");
-        printf("\n1 to Insert \n 2 to delete \n 3 to display\n");
+        printf("1 to Insert\n2 to delete\n3 to display\n");
         scanf("%d",&c);
         switch (c)
         {
