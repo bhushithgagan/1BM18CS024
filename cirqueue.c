@@ -8,11 +8,10 @@ void insertion(int ele,int *r,int q[],int *f)
         return;
     }
     if(*f==-1)
-    {
-        *f = 0;
-        *r = (*r+1)%N;
-        q[*r] = ele;
-    }
+    *f = 0;
+    *r = (*r+1)%N;
+    q[*r] = ele;
+    
 }
 
 int delete(int q[],int *f,int *r)
@@ -25,38 +24,33 @@ int delete(int q[],int *f,int *r)
     }
     else
     {
-        ele = q[*f];
-        if(*f == *r)
-        {
-            *f =  -1;
-            *r = -1;
-        }
-
-        else
-        {
-            *f = (*f+1)%N;
-            return ele;
-        }
-        
-    }
-    
+    ele = q[*f];
+    }  
+    if(*f == *r)
+    {
+    *f =  -1;
+    *r = -1;
+     }
+    else
+    *f = (*f+1)%N;
+    return ele;
+     
 }
 
 void display (int q[],int f,int r)
 {
     int i;
     if(f == -1)
+    printf("Queue is empty\n");
+    else
     {
-        printf("Queue is empty\n");
-        return;
-    }
-printf("Contents of Queue are:\n");
-    for(i = f; i!=r ;i=(i+1)%N)
-    {
-   printf("%d\n",q[i]);
-   }
- printf("%d\n",q[i]);
-        
+     printf("Contents of Queue are:\n");
+     for(i = f; i!=r ;i=(i+1)%N)
+      {
+       printf("%d\n",q[i]);
+      }
+     printf("%d\n",q[i]);
+    }    
 }
 
 int main()
@@ -83,5 +77,5 @@ int main()
        printf("Enter 1 for YES or 0 for No\n");
        scanf("%d",&ch1);
     } while(ch1!=0);
-return 0;
+return 1;
 }
