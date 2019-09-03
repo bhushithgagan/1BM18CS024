@@ -7,7 +7,7 @@ void insertion(int ele,int *r,int q[],int *f)
         printf("Queue is full\n");
         return;
     }
-    if(*f==-1)
+    if(*f==-1)     // Braces after this line caused the error of not displaying all the elements of the queue which is now resolved
     *f = 0;
     *r = (*r+1)%N;
     q[*r] = ele;
