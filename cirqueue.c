@@ -1,6 +1,6 @@
 #include<stdio.h>
 # define N 5
-void insertion(int ele,int *r,int q[],int*f)
+void insertion(int ele,int *r,int q[],int *f)
 {
     if ((*f == *r+1)||(*f==0 && *r == N-1))
     {
@@ -42,30 +42,30 @@ int delete(int q[],int *f,int *r)
     
 }
 
-int display (int q[],int f,int r)
+void display (int q[],int f,int r)
 {
     int i;
     if(f == -1)
     {
         printf("Queue is empty\n");
+        return;
     }
-    else
+printf("Contents of Queue are:\n");
+    for(i = f; i!=r ;i=(i+1)%N)
     {
-        for(i = f; i!=r; i=(i+1)%N)
-        {
-            printf("%d",q[i]);
-        }
-        printf("%d",q[i]);
-    }
+   printf("%d\n",q[i]);
+   }
+ printf("%d\n",q[i]);
+        
 }
 
 int main()
 {
-    int *f = 0,*r = -1,q[N],ele,ch,ch1;
+    int f = -1,r = -1,q[N],ele,ch,ch1;
     do
     {
        printf("***** Enter Your Choice *****\n ");
-       printf("1 for Inserting\n 2 for Deleting \n 3 for Display \n 4 for Exit\n");
+       printf("1 for Inserting\n 2 for Deleting \n 3 for Display \n ");
        scanf("%d",&ch);
        switch (ch)
         {
@@ -77,11 +77,10 @@ int main()
                   break;
          case 3 : display(q,f,r);
                   break;                  
-         case 4 : exit(1);
          default : printf("Invalid Entry\n");
         }
-       printf("***** Do you want to Continue? *****");
-       printf("Enter 1 for YES or 2 for No\n");
+       printf("***** Do you want to Continue? *****\n");
+       printf("Enter 1 for YES or 0 for No\n");
        scanf("%d",&ch1);
     } while(ch1!=0);
 return 0;
