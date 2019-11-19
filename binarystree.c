@@ -76,3 +76,5 @@ scanf("%d",&ch1);
 }while(ch1!=0);
 return 1;
 }
+
+

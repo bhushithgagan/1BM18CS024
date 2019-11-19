@@ -83,9 +83,28 @@ void display(NODE head) {
     }
 }
 
+NODE insertleft(NODE head, int ele,NODE n) {
+
+NODE newn = getnode();
+NODE p;
+newn->data = ele;
+if(head == n) {
+	newn->next = n;
+	n->prev = newn;
+	newn->prev = NULL;
+	newn = head;
+	return head;
+	}
+n->prev->next = newn;
+newn->prev = n->prev;
+newn->next = n;
+n->prev = newn;
+return head;
+}
+
 int main() {
     NODE head = NULL;
-    int ch,n,i,value,ch1,ele;
+    int ch,n,i,value,ch1,ele,p,count=0;
     do {
         printf("*** Enter your choice ***\n");
         printf("\n1 TO INSERT\n2 TO DELETE a SPECIFIC VALUE\n3 TO INSERT TO THE LEFT OF A NODE\n4 TO DISPLAY\n");
@@ -104,6 +123,19 @@ int main() {
                 scanf("%d",&value);
                 head = delete(head,value);
                 break;
+	case 3: printf("Enter the element to be inserted:\n");
+		scanf("%d",&ele);
+		printf("Enter the position:\n");
+		scanf("%d",&p);
+		NODE q = head;
+		count = 0;
+		while(q!=NULL) {
+			count ++;
+			if(count == p)
+				head = insertleft(head,ele,q);
+			q = q->next;
+			}
+		break;
         case 4: display(head);
                 break; 
         
@@ -114,4 +146,3 @@ int main() {
     }while(ch1!=0);
 return 1;
 }
-
